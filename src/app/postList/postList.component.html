@@ -1,0 +1,29 @@
+<ul class="list-group">
+    <!-- <app-postlist *ngFor="let post of posts"
+                  [appareilName]="appareil.name"
+                  [appareilStatus]="appareil.status"></app-appareil> -->
+    <li *ngFor="let post of posts; let i = index"
+        [ngClass]="{'list-group-item': true,
+                    'list-group-item-success': post.loveIts > 0,
+                    'list-group-item-danger': post.loveIts < 0}">
+        <!-- <div style="width: 20px;height: 20px;background-color: red"
+            *ngIf="appareilStatus === 'Eteind'"></div> -->
+        <div class="row">
+            <div class="col-md-6">
+                <h2>{{ post.title }}</h2>
+            </div>
+            <!-- <div class="col-md"></div> -->
+            <div class="col-md-6">
+                <h3 class="pull-right"><small class="text-muted"><em> {{ post.created_at | date : 'mm/d/y, h:m a' }} </em></small></h3>
+            </div>
+        </div>
+        <p> {{ post.content }} </p>
+        <button class="btn btn-success"
+                (click)="onAddLoveIts(i)">Love it!</button>
+
+        <button class="btn btn-danger"
+                (click)="onDelLoveIts(i)">Don't love it!</button>
+        <!-- <input type="text" class="form-control" [(ngModel)]="appareilName"> -->
+    </li>
+</ul>
+
