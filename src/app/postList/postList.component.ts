@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Post } from '../model/post';
 
 @Component({
   selector: 'app-postlist',
@@ -7,26 +8,8 @@ import { Component, Input } from '@angular/core';
 })
 export class PostListComponent {
 
-  @Input() posts : any[];
+  @Input() posts : Post[];
 
   constructor() { }
-
-  getColor(parLoveIts : number) : string{
-    if(parLoveIts > 0){
-      return "green";
-    } else if(parLoveIts < 0){
-      return "red";
-    } else if(parLoveIts == 0){
-      return "black";
-    }
-  }
-
-  onAddLoveIts(index : number){
-    this.posts[index].loveIts += 1;
-  }
-
-  onDelLoveIts(index : number){
-    this.posts[index].loveIts -= 1;
-  }
 
 }
